@@ -4,9 +4,9 @@ from pydantic import BaseModel
 class ChungNhan(BaseModel):
     MaNV: str
     MaMB: int
-    def __init__(self, MaNV, MaMB):
-        self.MaNV = MaNV
-        self.MaMB = MaMB
+    # def __init__(self, MaNV, MaMB):
+    #     self.MaNV = MaNV
+    #     self.MaMB = MaMB
     
 def get_chungnhan(MaNV):
     try:
@@ -25,10 +25,11 @@ def get_chungnhan(MaNV):
         
 def create_chungnhan_data(item: ChungNhan):
     try:
-        cursor.execute(f"""
+        value = (item.MaNV, item.MaMB)
+        cursor.execute("""
                        INSERT INTO CHUNGNHAN(MaNV, MaMB)
-                       VALUES ('{item.MaNV}', '{item.MaMB}')
-                       """)
+                       VALUES (%s, %s)
+                       """, value)
         conn.commit()
         return {"message": "Data created successfully"}
     except Exception as e:
@@ -36,11 +37,12 @@ def create_chungnhan_data(item: ChungNhan):
         
 def put_chungnhan_data(MaNV, item: ChungNhan):
     try:
+        value = (item.MaMB, MaNV)
         cursor.execute(f"""
                     UPDATE CHUNGNHAN
-                    SET MaMB = '{item.MaMB}'
-                    WHERE MaNV = '{MaNV}'
-                    """)
+                    SET MaMB = %s
+                    WHERE MaNV = %s
+                    """, value)
         conn.commit()
         return {"message": "Data updated successfully"}
     except Exception as e:

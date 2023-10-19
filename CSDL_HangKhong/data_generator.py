@@ -18,8 +18,8 @@ def generate_data():
         GioDi = str(randint(0, 23)) + ":" + str(randint(0, 59)) + ":" + str(randint(0, 59))
         GioDen = str(randint(0, 23)) + ":" + str(randint(0, 59)) + ":" + str(randint(0, 59))
         ChiPhi = str(randint(100000, 1000000))
-        create_chuyenbay_data(MaCB, GaDi, GaDen, DoDai, GioDi, GioDen, ChiPhi)
-
+        
+        
     for i in range(0, 100):
         MaMB = str(randint(1, 20))
         loai = ["Boeing", "Airbus", "Atr"]
@@ -38,6 +38,3 @@ def generate_data():
             "Nguyen Van K",
         ] 
         Luong = str(randint(1000000, 10000000))
-        create_maybay_data(MaMB, loai[randint(0, 2)], Tambay)
-        create_chungnhan_data(Manv, MaMB)
-        create_nhanvien_data(Manv, tennv[randint(0, 9)], Luong)

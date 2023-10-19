@@ -5,10 +5,10 @@ class MayBay(BaseModel):
     MaMB: int
     Hieu: str
     TamBay: int
-    def __init__(self, MaMB, Hieu, TamBay):
-        self.MaMB = MaMB
-        self.Hieu = Hieu
-        self.TamBay = TamBay
+    # def __init__(self, MaMB, Hieu, TamBay):
+    #     self.MaMB = MaMB
+    #     self.Hieu = Hieu
+    #     self.TamBay = TamBay
     
 def get_maybay(MaMB):
     try:
@@ -27,10 +27,11 @@ def get_maybay(MaMB):
         
 def create_maybay_data(item: MayBay):
     try:
+        value = (item.MaMB, item.Hieu, item.TamBay)
         cursor.execute(f"""
             INSERT INTO MAYBAY(MaMB, Hieu, TamBay)
-            VALUES ('{item.MaMB}', '{item.Hieu}', {item.TamBay})
-            """)    
+            VALUES (%s, %s, %s)
+            """, value)    
         conn.commit()
         return {"message": "Data created successfully"}
     except Exception as e:
@@ -38,11 +39,12 @@ def create_maybay_data(item: MayBay):
         
 def put_maybay_data(MaMB, item: MayBay):
     try:
+        value = (item.Hieu, item.TamBay, MaMB)
         cursor.execute(f"""
             UPDATE MAYBAY
-            SET Hieu = '{item.Hieu}', TamBay = '{item.TamBay}'
-            WHERE MaMB = '{MaMB}'
-            """)
+            SET Hieu = %s, TamBay = %s
+            WHERE MaMB = %s
+            """, value)
         conn.commit()
         return {"message": "Data updated successfully"}
     except Exception as e:

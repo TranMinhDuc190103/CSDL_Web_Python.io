@@ -58,15 +58,15 @@ async def chuyenbay(MaCB):
     return get_chuyenbay(MaCB)
 
 @app.post("/chuyenbay/input")
-async def create_chuyenbay(MaCB: str,GaDi: str,GaDen: str,DoDai: int,GioDi: str,GioDen: str,ChiPhi: int):
-    return create_chuyenbay_data(ChuyenBay(MaCB,GaDi,GaDen,DoDai,GioDi,GioDen,ChiPhi))
+async def create_chuyenbay(item: ChuyenBay):
+    return create_chuyenbay_data(item)
 
 @app.put("/chuyenbay/{MaCB}")
-async def put_chuyenbay(MaCB: str,GaDi: str,GaDen: str,DoDai: int,GioDi: str,GioDen: str,ChiPhi: int):
-    return put_chuyenbay_data(MaCB,ChuyenBay(MaCB, GaDi,GaDen,GioDi,DoDai,GioDen,ChiPhi))
+async def put_chuyenbay(MaCB, item: ChuyenBay):
+    return put_chuyenbay_data(MaCB, item)
 
 @app.delete("/chuyenbay/{MaCB}")
-async def delete_chuyenbay(MaCB: str):
+async def delete_chuyenbay(MaCB):
     return delete_chuyenbay_data(MaCB)
 
 #API May bay
@@ -75,12 +75,12 @@ async def maybay(MaMB):
     return get_maybay(MaMB)
 
 @app.post("/maybay/input")
-async def create_maybay(MaMB: int,Loai: str,TamBay: int):
-    return create_maybay_data(MayBay(MaMB,Loai,TamBay))
+async def create_maybay(item: MayBay):
+    return create_maybay_data(item)
 
 @app.put("/maybay/{MaMB}")
-async def put_maybay(MaMB: int,Loai: str,TamBay: int):
-    return put_maybay_data(MaMB,MayBay(MaMB,Loai,TamBay))
+async def put_maybay(MaMB, item: MayBay):
+    return put_maybay_data(MaMB, item)
 
 @app.delete("/maybay/{MaMB}")
 async def delete_maybay(MaMB):
@@ -92,12 +92,12 @@ async def nhanvien(MaNV):
     return get_nhanvien(MaNV)
 
 @app.post("/nhanvien/input")
-async def create_nhanvien(MaNV: str,Ten: str,Luong: int):
-    return create_nhanvien_data(NhanVien(MaNV,Ten,Luong))
+async def create_nhanvien(item: NhanVien):
+    return create_nhanvien_data(item)
 
 @app.put("/nhanvien/{MaNV}")
-async def put_nhanvien(MaNV: str,Ten: str,Luong: int):
-    return put_nhanvien_data(MaNV,NhanVien(MaNV, Ten,Luong))
+async def put_nhanvien(MaNV, item: NhanVien):
+    return put_nhanvien_data(MaNV, item)
 
 @app.delete("/nhanvien/{MaNV}")
 async def delete_nhanvien(MaNV):
@@ -108,12 +108,12 @@ async def chungnhan(MaNV):
     return get_chungnhan(MaNV)
 
 @app.post("/chungnhan/input")
-async def create_chungnhan(MaNV: str,MaMB: int):
-    return create_chungnhan_data(ChungNhan(MaNV,MaMB))
+async def create_chungnhan(item: ChungNhan):
+    return create_chungnhan_data(item)
 
 @app.put("/chungnhan/{MaNV}")
-async def put_chungnhan(MaNV: str,MaMB: int):
-    return put_chungnhan_data(MaNV,ChungNhan(MaNV, MaMB))
+async def put_chungnhan(MaNV, item: ChungNhan):
+    return put_chungnhan_data(MaNV, item)
 
 @app.delete("/chungnhan/{MaNV}")
 async def delete_chungnhan(MaNV):
@@ -122,4 +122,3 @@ async def delete_chungnhan(MaNV):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=3306)
-    # generate_data()
