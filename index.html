@@ -7,9 +7,12 @@
         <style>
             body {
                 text-align: center;
-                background-image: url("https://img.freepik.com/free-vector/simple-starry-night-background-gradient_23-2148273606.jpg?w=996&t=st=1699163311~exp=1699163911~hmac=44c90063455135571034ff87c318829f714cdb938cf7aa591780fd3763243f3a");
-                background-size: 110%;
-                background-repeat: no-repeat
+                background-image: url("https://images.unsplash.com/photo-1585314062604-1a357de8b000?auto=format&fit=crop&q=80&w=871&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+                background-size: cover
+            }
+            P {
+                font-size: 50px;
+                color: #f1f1ff
             }
             h1 {
                 font-family: 'Oswald', sans-serif;
@@ -29,6 +32,7 @@
     </head>
     <body>
         <h1>Welcome to CSDL Web Database</h1>
+        <p>Enter your query</p>
         <div class="query-methods">
             <div class="database">
                 <select>
@@ -50,13 +54,32 @@
                 </select>
             </div>
             <div class="form-box-query">
-                <form action="/main.py">
-                    <label for="query">Query:</label><br>
-                    <input type="text" id="query" name="query" placeholder="Enter your query">
-                </form>
-                <table id="result"> Query Result
-                    
-                </table>
+                <p id=""></p>
+                <script>
+                    function myFunction(){
+                        let x = document.getElementById("database").value;
+                        let y = document.getElementById("query").value;
+                        let tableHTML = "";
+                        if(x == "congviec"){
+                            tableHTML = 
+                        } else if (x == "nhanvien"){
+                            
+                        } else if (x == "dean"){
+                            
+                        } else if (x == "phongban"){
+                            
+                        } else if (x == "diadiem_phg"){
+                            
+                        } else if (x == "phancong"){
+                            
+                        } else if (x == "thannhan"){
+                            
+                        }
+                    }
+                    fetch('http://127.0.0.1:3306/').then(Response => Response.json()).then(data => {
+                        let table 
+                    })
+                </script>
             </div>
         </div>
     </body>
