@@ -2,6 +2,12 @@ from pydantic import BaseModel
 from datetime import datetime
 
 NHANVIEN_COLUMNS = ("Họ nhân viên", "Tên Lót", "Tên nhân viên", "Mã NV", "Ngày sinh", "Địa chỉ", "Giới tính", "Lương", "Mã NQL", "Phòng")
+CONGVIEC_COLUMNS = ("Mã đề án", "Số thứ tự", "Tên công việc")
+DEAN_COLUMNS = ("Tên đề án", "Mã đề án", "Địa điểm đề án", "Phòng")
+DIADIEMPHG_COLUMNS = ("Mã phòng", "Địa điểm")
+PHANCONG_COLUMNS = ("Mã nhân viên", "Mã đề án", "Số thứ tự", "Thời gian")
+PHONGBAN_COLUMNS = ("Tên phòng", "Mã phòng", "Trưởng phòng", "Ngày nhận chức")
+THANNHAN_COLUMNS = ("Mã nhân viên", "Tên thân nhân", "Ngày sinh", "Phái", "Quan hệ")
 
 class nhanvien(BaseModel):
     HoNV: str
