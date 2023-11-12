@@ -5,13 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> CSDL Web - Quản lí đề án </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{url_for('static', path='/21002134_buoi5css.css')}}" rel="stylesheet">
     </head>
     <body>
-        <h1 class="page-header text-center"> Result </h1>
-        <div class="container">
+        <h1> Result </h1>
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <table class="table table-bordered table-striped">
+                <div class="col">
+                    <table class="table table-success table-hover table-center w-auto table-responsive">
                         <tr>
                             {% for col in columns %}
                             <th>{{col}}</th>
@@ -19,8 +20,8 @@
                         </tr>
                         {% for row in result %}
                         <tr>
-                            {% for ele in row %}
-                            <td>{{ele}}</td>
+                            {% for e in row %}
+                            <td>{{e}}</td>
                             {% endfor %} 
                         </tr>
                         {% endfor %}
